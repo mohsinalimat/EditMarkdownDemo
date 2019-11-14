@@ -20,6 +20,8 @@
 #define kDevice_Is_iPhoneX (statusBar_height > 20 ?  YES : NO)
 //tab 相对于底部 的安全距离
 #define tabbarBottomPadding  (kDevice_Is_iPhoneX ? 34 : 0)
+#define toolbarYPadding  (kDevice_Is_iPhoneX ? 54 : 40)
+
 //导航高度
 #define nav_height        (statusBar_height + 44.f)
 
@@ -107,7 +109,7 @@
     
     __weak typeof(self) weakSelf = self;
     void(^animations)(void) = ^{
-        CGFloat topY = MAX(endFrame.origin.y - weakSelf.shortcutKeyView.height,0);
+        CGFloat topY = MAX(endFrame.origin.y - weakSelf.shortcutKeyView.height-toolbarYPadding,0);
         if (topY != weakSelf.shortcutKeyView.top) {
             weakSelf.shortcutKeyView.top = topY;
         }
